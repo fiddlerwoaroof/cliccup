@@ -5,11 +5,10 @@
   :description ""
   :author "Ed L <edward@elangley.org>"
   :license "MIT"
-  :depends-on (#:alexandria
-               #:uiop
+  :depends-on (
+               #:fwoar-lisputils/string-utils
                #:serapeum
                #:plump
                )
   :serial t
-  :components (
-               ))
+  :components ((:file "cliccup")))
