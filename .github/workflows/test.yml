@@ -61,6 +61,6 @@ jobs:
           sbcl --disable-debugger --no-userinit \
                --load "$HOME/quicklisp/setup.lisp" \
                --eval "(mapcar 'asdf:load-asd (directory \"*.asd\"))" \
-               --eval "(handler-case (ql:quickload :co.fwoar.cliccup) (error () (uiop:quit 42)))" \
+               --eval "(handler-case (ql:quickload :co.fwoar.cliccup) (error (c) (princ c) (uiop:quit 42)))" \
                --quit
                # --eval "(handler-case (asdf:test-system :co.fwoar.cliccup) (error () (uiop:quit 42)))" \
