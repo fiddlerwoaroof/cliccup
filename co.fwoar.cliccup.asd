@@ -5,7 +5,6 @@
   :description ""
   :author "Ed L <edward@elangley.org>"
   :license "MIT"
-  :depends-on (#:fwoar-lisputils/string-utils
-               #:plump)
+  :depends-on (#:plump)
   :serial t
   :components ((:file "cliccup")))
