@@ -58,11 +58,21 @@
 (defmethod make-text-node ((parent plump:element) (text string))
   (plump:make-text-node parent text))
 
+(defun partition@ (s)
+  (declare (optimize (speed 3) (debug 1)))
+  (check-type s string)
+  (let ((position-@ (position #\@ s)))
+    (if position-@
+        (list (subseq s 0 position-@)
+              (subseq s (1+ position-@)))
+        (list (copy-seq s)
+              ""))))
+
 (defun parse-tag (tag)
   (when (> (count #\@ tag) 1)
     (error "too many ids"))
   (destructuring-bind (head tail)
-      (fwoar.string-utils:partition #\@ tag)
+      (partition@ tag)
     (let* ((tail-parsed (when tail
                           (split-dots tail)))
            (id (when tail
